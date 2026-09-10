@@ -1,4 +1,4 @@
--- טבלאות הבסיס של לוח מעקב סגירת חודש
+-- Base tables. ASCII only: Hebrew literals here break copy/paste into the SQL editor (bidi reordering).
 
 create table if not exists public.profiles (
   id uuid primary key references auth.users (id) on delete cascade,
@@ -9,14 +9,14 @@ create table if not exists public.profiles (
 create table if not exists public.clients (
   id uuid primary key default gen_random_uuid(),
   name text not null,
-  status text not null default 'בטיפול',
+  status text not null,
   missing_docs text,
   due_date date,
   assigned_to uuid references public.profiles (id) on delete set null,
   archived boolean not null default false
 );
 
--- פונקציית עזר: האם המשתמש המחובר הוא מנהל
+-- Helper: is the current user a manager?
 create or replace function public.is_manager()
 returns boolean
 language sql
