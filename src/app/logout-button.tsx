@@ -18,7 +18,7 @@ export default function LogoutButton() {
       onClick={handleLogout}
       className="rounded border border-gray-300 bg-white px-3 py-1.5 text-sm hover:bg-gray-100"
     >
-      התנתק
+      התנתקות מהמערכת
     </button>
   );
 }

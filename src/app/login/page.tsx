@@ -38,7 +38,7 @@ export default function LoginPage() {
         onSubmit={handleSubmit}
         className="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow-sm"
       >
-        <h1 className="mb-6 text-xl font-semibold">כניסה למערכת</h1>
+        <h1 className="mb-6 text-xl font-semibold">כניסה למערכת הניהול</h1>
 
         <label className="mb-1 block text-sm font-medium" htmlFor="email">
           אימייל

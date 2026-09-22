@@ -53,7 +53,7 @@ export default async function HomePage() {
 
   return (
     <main className="mx-auto max-w-5xl p-6">
-      <header className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-4">
+      <header className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-6">
         <div>
           <h1 className="text-xl font-semibold">לוח מעקב סגירת חודש</h1>
           <p className="mt-1 text-sm text-gray-600">
