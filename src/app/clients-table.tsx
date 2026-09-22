@@ -26,6 +26,8 @@ export default function ClientsTable({ rows }: { rows: ClientRow[] }) {
   const [savingId, setSavingId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const activeCount = clients.length;
+
   async function updateStatus(id: string, status: string) {
     const previous = clients;
     setClients((c) => c.map((r) => (r.id === id ? { ...r, status } : r)));
@@ -53,6 +55,10 @@ export default function ClientsTable({ rows }: { rows: ClientRow[] }) {
           {error}
         </p>
       )}
+
+      <p className="mb-3 text-sm font-medium text-gray-700">
+        {activeCount} לקוחות פעילים
+      </p>
 
       <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
         <table className="w-full text-right text-sm">
