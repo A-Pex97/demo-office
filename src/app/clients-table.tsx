@@ -5,6 +5,11 @@ import { createClient } from "@/lib/supabase/client";
 
 const STATUSES = ["בטיפול", "ממתין ללקוח", "הושלם"];
 
+const STATUS_ROW_COLORS: Record<string, string> = {
+  "ממתין ללקוח": "bg-orange-50",
+  "הושלם": "bg-green-50",
+};
+
 export type ClientRow = {
   id: string;
   name: string;
@@ -73,7 +78,12 @@ export default function ClientsTable({ rows }: { rows: ClientRow[] }) {
           </thead>
           <tbody>
             {clients.map((row) => (
-              <tr key={row.id} className="border-b border-gray-100 last:border-0">
+              <tr
+                key={row.id}
+                className={`border-b border-gray-100 last:border-0 ${
+                  STATUS_ROW_COLORS[row.status] ?? ""
+                }`}
+              >
                 <td className="px-4 py-3">{row.name}</td>
                 <td className="px-4 py-3">
                   <select
