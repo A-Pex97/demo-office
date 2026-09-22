@@ -33,6 +33,13 @@ export default function ClientsTable({ rows }: { rows: ClientRow[] }) {
 
   const activeCount = clients.length;
 
+  // מיון לפי תאריך יעד עולה — לקוחות ללא תאריך יעד יוצגו בסוף
+  const sortedClients = [...clients].sort((a, b) => {
+    if (!a.due_date) return 1;
+    if (!b.due_date) return -1;
+    return a.due_date.localeCompare(b.due_date);
+  });
+
   async function updateStatus(id: string, status: string) {
     const previous = clients;
     setClients((c) => c.map((r) => (r.id === id ? { ...r, status } : r)));
@@ -77,7 +84,7 @@ export default function ClientsTable({ rows }: { rows: ClientRow[] }) {
             </tr>
           </thead>
           <tbody>
-            {clients.map((row) => (
+            {sortedClients.map((row) => (
               <tr
                 key={row.id}
                 className={`border-b border-gray-100 last:border-0 ${
